@@ -7,7 +7,7 @@ library ieee;
 
 entity input_handler is
 	generic (
-		DIVIDER : integer := 100
+		COUNT_MAX : integer := 100
 	);
 	port (
 		row_sel			: in std_logic_vector(4 downto 0);
@@ -21,7 +21,7 @@ end input_handler;
 
 architecture input_handler of input_handler is
 
-	signal counter					: integer range 0 to DIVIDER - 1 := 0;
+	signal counter					: integer range 0 to COUNT_MAX - 1 := 0;
 	signal clk_en					: std_logic := '0';
 	signal keypress					: std_logic := '0';
 	signal buf_col_sel				: std_logic_vector(3 downto 0);
@@ -38,22 +38,23 @@ begin
 		if reset = '1' then
 			counter <= 0;
 		elsif rising_edge(clk) then
-			if counter < DIVIDER then
+			if counter < COUNT_MAX then
 				counter <= counter + 1;
+				clk_en <= '0';
 			else
 				counter <= 0;
-				clk_en <= not clk_en;	
-			end if;
+				clk_en <= '1';
+			end if;	
 		end if;
 	end process;
 
 	-- col_sel selection clock
-	process(clk)
+	process(clk, clk_en)
 	begin
 		if reset = '1' then
 			internal_state_sel <= 0;
-		elsif rising_edge(clk) and keypress = '0' then
-			if internal_state_sel < 4 then
+		elsif rising_edge(clk) and keypress = '0' and clk_en = '1' then
+			if internal_state_sel < 3 then
 				internal_state_sel <= internal_state_sel + 1;
 			else
 				internal_state_sel <= 0;
@@ -62,7 +63,7 @@ begin
 	end process;
 
 	-- Keypress
-	process(row_sel)
+	process(row_sel, clk, clk_en)
 	begin
 		if reset = '1' then
 			keypress <= '0';
@@ -111,7 +112,7 @@ begin
 			when "110101111" => key_out <= x"00";	
 			when "101101111" => key_out <= x"F1"; -- H
 			when "011101111" => key_out <= x"F2"; -- L
-			when others => key_out <= x"FF";
+			when others => key_out <= x"FF"; -- Error code
 		end case;
 	end process;
 
