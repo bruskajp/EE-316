@@ -7,7 +7,7 @@ library ieee;
 
 entity input_handler is
 	generic (
-		COUNT_MAX : integer := 100
+		COUNT_MAX : integer := 250000
 	);
 	port (
 		row_sel			: in std_logic_vector(4 downto 0);
