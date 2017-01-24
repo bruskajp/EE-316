@@ -115,5 +115,5 @@ begin
 			when others => key_out <= x"FF"; -- Error code
 		end case;
 	end process;
-
+			
 end input_handler;
