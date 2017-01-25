@@ -7,8 +7,7 @@ library ieee;
 
 entity display_driver is
 	port (
-		keycode				: in std_logic_vector(3 downto 0);
-		flag_keypress		: in std_logic;
+		keycode				: in std_logic_vector(7 downto 0);
 		sram_address		: in std_logic_vector(7 downto 0);
 		sram_data			: in std_logic_vector(15 downto 0);
 		write_address		: in std_logic;
@@ -26,16 +25,18 @@ architecture behavior of display_driver is
 	
 begin
 	-- Demux for piping input into correct register
-	process(write_address, keycode, flag_keypress)
+	process(write_address, keycode)
 	begin
-		if write_address = '1' and flag_keypress = '1' then
-			address_register(3 downto 0) <= keycode;
-			address_register(7 downto 4) <= address_register(3 downto 0);
-		elsif flag_keypress = '1' then
-			data_register(3 downto 0) <= keycode;
-			data_register(7 downto 4) <= data_register(3 downto 0);
-			data_register(11 downto 8) <= data_register(7 downto 4);
-			data_register(15 downto 12) <= data_register(11 downto 8);
+		if keycode(7 downto 4) /= x"F" then
+			if write_address = '1' then
+				address_register(3 downto 0) <= keycode(3 downto 0);
+				address_register(7 downto 4) <= address_register(3 downto 0);
+			else
+				data_register(3 downto 0) <= keycode;
+				data_register(7 downto 4) <= data_register(3 downto 0);
+				data_register(11 downto 8) <= data_register(7 downto 4);
+				data_register(15 downto 12) <= data_register(11 downto 8);
+			end if;
 		end if;
 	end process;
 	
