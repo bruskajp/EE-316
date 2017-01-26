@@ -8,7 +8,6 @@ entity system_controller is
 		clk_50			: in std_logic;
 		reset_key		: in std_logic;
 		op_prog_mode	: out std_logic;
-		--data_out			: out std_logic_vector (15 downto 0);
 		
 		sram_addr	: out std_logic_vector (17 downto 0);
 		sram_dq		: inout std_logic_vector (15 downto 0);
@@ -31,46 +30,48 @@ end system_controller;
 
 architecture behavior of system_controller is
 	
-	signal clk_cnt      	: integer range 0 to 500000;
-	signal clk_slow		: std_logic := '0';
-	
+	-- keypad input 
 	signal keypress		: std_logic_vector (7 downto 0); 
 	signal keypad_addr	: std_logic_vector (7 downto 0);
 	signal keypad_data	: std_logic_vector (15 downto 0);
-
+	signal key_out			: std_logic_vector(7 downto 0);
+	signal keypress_out	: std_logic; -- unneeded
 	
+	-- keypad debouncer
+	signal clk_cnt      	: integer range 0 to 500000;
 	signal buf_f_b 		: std_logic;
 	signal buf_reset_key : std_logic;
 	signal flag_reset 	: std_logic;
 	signal buf_keypress 	: std_logic_vector (7 downto 0); 
 	signal flag_keypress : std_logic_vector (7 downto 0); 
 
-	signal deb_reset_key			: std_logic;
-	signal buf_deb_reset_key	: std_logic;
+	-- keypress to single pulse
 	signal deb_keypress			:std_logic_vector (7 downto 0);
 	signal buf_deb_keypress 	: std_logic_vector (7 downto 0); 
 	
+	-- state control for initialization, operation, and programming mode
 	type state_type is (init, op_mode, prog_mode);
 	signal state : state_type := init;
 	
+	-- internal state data
 	signal buf_addr_data 	: std_logic;
 	signal buf_clk_en 		: std_logic := '0';
 	signal counter_reset 	: std_logic;
 	signal counter_out 		: std_logic_vector (7 downto 0);
 	signal counter2_out 		: std_logic_vector (7 downto 0);
-	signal rom_addr 			: std_logic_vector (7 downto 0);
-	signal rom_out 			: std_logic_vector (15 downto 0);
 	signal buf_op_prog_mode : std_logic;
 	
+	-- rom control
+	signal rom_addr 			: std_logic_vector (7 downto 0);
+	signal rom_out 			: std_logic_vector (15 downto 0);
+	
+	-- sram controller
 	signal sram_cntlr_data_in 	: std_logic_vector (15 downto 0);
 	signal sram_cntlr_addr 		: std_logic_vector (17 downto 0);
 	signal sram_cntlr_r_w 		: std_logic;
 	signal sram_cntlr_r_w_en 	: std_logic := '0';
 	signal sram_cntlr_r_w_stat : std_logic;
 	signal sram_cntlr_data_out : std_logic_vector (15 downto 0);
-	
-	signal key_out			: std_logic_vector(7 downto 0);
-	signal keypress_out	: std_logic; -- unneeded
 
 	component input_handler is
 		generic (
@@ -272,6 +273,7 @@ begin
 		mode_select_out	=> lcd_select_out
 	);
 	
+	-- keypad debouncer
 	process(clk_50)
 	begin
 		if rising_edge(clk_50) then
@@ -289,6 +291,7 @@ begin
 		end if;    
 	end process;
 	
+	-- keypress to single pulse
 	process (clk_50)
 	begin
 		if rising_edge(clk_50) then
@@ -301,11 +304,12 @@ begin
 		end if;
 	end process;
 	
+	-- state control for initialization, operation, and programming mode
 	process (clk_50)
 	begin
 		if rising_edge(clk_50) then
 			case state is
-				when init =>
+				when init => -- initialization mode
 					counter_reset <= '0';
 					if counter2_out = X"FF" then
 						state <= op_mode;
@@ -322,7 +326,7 @@ begin
 						rom_addr <= counter2_out;
 						sram_cntlr_data_in <= rom_out;
 					end if;
-				when op_mode =>
+				when op_mode => -- operation mode
 					op_prog_mode <= '0';
 					buf_op_prog_mode <= '0';
 					if flag_keypress = X"F2" then -- L 
@@ -340,10 +344,9 @@ begin
 					sram_cntlr_r_w <= '0';
 					sram_cntlr_r_w_en <= not sram_cntlr_r_w_en;
 					sram_cntlr_addr <= "0000000000" & counter_out;
-					rom_addr <= counter_out; -- DEBUGGING CODE
-					--data_out <= sram_cntlr_data_out;
+					--rom_addr <= counter_out; -- DEBUGGING CODE
 					counter_reset <= '0';
-				when prog_mode =>
+				when prog_mode => -- programming mode
 					op_prog_mode <= '1';
 					buf_op_prog_mode <= '1';
 					if flag_keypress = X"F2" and sram_cntlr_r_w_stat = '0' then -- L
