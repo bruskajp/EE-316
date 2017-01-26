@@ -34,6 +34,7 @@ entity lcd_driver is
         sys_fb       		: in std_logic;
         sys_en		 		: in std_logic;
 		sys_prog			: in std_logic;
+		is_addr				: in std_logic;
 		address				: in std_logic_vector(7 downto 0);
         data		 		: in std_logic_vector(15 downto 0);
         data_out        	: out std_logic_vector(7 downto 0);
@@ -148,13 +149,21 @@ begin
 	end process;
      
     -- Mux for sys enable ascii
-    process(sys_en)
+    process(sys_en, sys_prog, is_addr)
     begin
-        if sys_en = '1' then
-            sys_en_ascii <= (x"45", x"6E", x"61", x"62", x"6C", x"65", x"20", x"20"); -- Enable
-        else
-            sys_en_ascii <= (x"44", x"69", x"73", x"61", x"62", x"6C", x"65", x"20"); -- Disable
-        end if;
+		if sys_prog = '0' then
+			if sys_en = '1' then
+				sys_en_ascii <= (x"45", x"6E", x"61", x"62", x"6C", x"65", x"20", x"20"); -- Enable
+			else
+				sys_en_ascii <= (x"44", x"69", x"73", x"61", x"62", x"6C", x"65", x"20"); -- Disable
+			end if;
+		else
+			if is_addr = '1' then
+				sys_en_ascii <= (x"41", x"64", x"64", x"72", x"65", x"73", x"73", x"20"); -- Address
+			else
+				sys_en_ascii <= (x"44", x"61", x"74", x"61", x"20", x"20", x"20", x"20"); -- Data
+			end if;
+		end if;
     end process;
     
     -- LUT for enable_out default 0
@@ -190,8 +199,8 @@ begin
             when 16 => data_out <= sys_mode_ascii(6); mode_select_out <= '1';
             when 18 => data_out <= sys_mode_ascii(7); mode_select_out <= '1';
             -- Space
-            -- when 19 => data_out <= x"72"; mode_select_out <= '1';
-			when 19 => data_out <= x"0C"; mode_select_out <= '0';
+            when 19 => data_out <= x"72"; mode_select_out <= '1';
+			-- when 19 => data_out <= x"0c"; mode_select_out <= '0';
             -- System State
             when 20 => data_out <= sys_state_ascii(0); mode_select_out <= '1';
             when 21 => data_out <= sys_state_ascii(1); mode_select_out <= '1';
@@ -212,14 +221,10 @@ begin
             when 34 => data_out <= sys_en_ascii(5); mode_select_out <= '1';
             when 35 => data_out <= sys_en_ascii(6); mode_select_out <= '1';
             when 36 => data_out <= sys_en_ascii(7); mode_select_out <= '1';
-            -- Space
-            -- when 37 => data_out <= x"72"; mode_select_out <= '1';
 			-- Address ex. x00
 			when 37 => data_out <= x"78"; mode_select_out <= '1';
 			when 38 => data_out <= hex_to_ascii(address(7 downto 4)); mode_select_out <= '1';
 			when 39 => data_out <= hex_to_ascii(address(3 downto 0)); mode_select_out <= '1';
-            -- Space
-			-- when 41 => data_out <= x"72"; mode_select_out <= '1';
 			-- Data ex. xA0A0
 			when 40 => data_out <= x"78"; mode_select_out <= '1';
             when 41 => data_out <= hex_to_ascii(data(15 downto 12)); mode_select_out <= '1';
