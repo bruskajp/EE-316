@@ -6,7 +6,7 @@ library IEEE;
 	use IEEE.STD_LOGIC_1164.ALL;
 	use IEEE.NUMERIC_STD.ALL;
 
-entity seven_seg is
+entity seven_seg_driver is
     port(
         data       	: in std_logic_vector(15 downto 0);
         address    	: in std_logic_vector(7 downto 0);
@@ -17,9 +17,9 @@ entity seven_seg is
         hex4		: out std_logic_vector(7 downto 0);
         hex5		: out std_logic_vector(7 downto 0)
     );
-end seven_seg;
+end seven_seg_driver;
 
-architecture Behavioral of seven_seg is
+architecture Behavioral of seven_seg_driver is
 
 -- Function to convert hex into seven seg
 function hex_to_seven(hex_code : std_logic_vector(3 downto 0))

@@ -1,0 +1,86 @@
+----------------------------------------------------------------------------------
+-- Institution: Clarkson Univeristy 
+-- Engineer: Zander Blasingame and Brandon Norris
+-- 
+-- Create Date: 11/11/2016 21:06:23
+-- Design Name: 
+-- Module Name: counter - Behavioral
+-- Project Name: Final Exam
+-- Target Devices: Nexys4 DDR
+-- Tool Versions: 
+-- Description: Final Exam for Dr. Abul Khondker's EE 365 class
+--              of Fall 2016. counter has two inputs and three outputs
+--              as described in the project description.
+-- 
+----------------------------------------------------------------------------------
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+use IEEE.NUMERIC_STD.ALL;
+
+entity counter is
+    Generic (
+        -- Input clk frequency is given as 50MHz
+        -- Number picked such that T = 1s
+        constant cnt_max    : integer := 50000000
+    );
+    Port (
+        iClk         : in STD_LOGIC;
+        iReset       : in STD_LOGIC;
+		is_forward	 : in STD_LOGIC;
+		is_enabled	 : in STD_LOGIC;
+        output_data	 : out STD_LOGIC_VECTOR(7 downto 0)
+	);
+end counter;
+
+architecture Behavioral of counter is
+
+-- Define signals here
+signal clk_enable   		: std_logic := '1';
+signal clk_cnt      		: integer range 0 to cnt_max;
+signal output_cnt			: integer range 0 to 255 := 0;
+
+begin
+    -- Clock enabler
+    process(iClk)
+    begin
+        if rising_edge(iClk) then
+            if clk_cnt = cnt_max then
+                clk_cnt <= 0;
+                clk_enable <= '1';
+            else
+                clk_cnt <= clk_cnt + 1;
+                clk_enable <= '0';
+            end if;
+        end if;    
+    end process;
+    
+    -- oEnable selection clock
+    process(iClk, iReset, clk_enable, is_enabled)
+    begin
+        if iReset = '1' then
+            output_cnt <= 0;
+        elsif rising_edge(iClk) and clk_enable = '1' and is_enabled = '1' then
+			if is_forward = '1' then
+				if output_cnt = 255 then
+					output_cnt <= 0;
+				else
+					output_cnt <= output_cnt + 1;
+				end if;
+			else
+				if output_cnt = 0 then
+					output_cnt <= 255;
+				else
+					output_cnt <= output_cnt - 1;
+				end if;
+			end if;
+        end if;
+    end process;
+	
+	output_data <= std_logic_vector(to_unsigned(output_cnt, 8));
+    
+end Behavioral;

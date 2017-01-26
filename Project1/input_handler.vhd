@@ -33,7 +33,7 @@ architecture input_handler of input_handler is
 	
 begin
 	-- Clock Enabler 
-	process(clk)
+	process(clk, reset)
 	begin
 		if reset = '1' then
 			counter <= 0;
@@ -49,7 +49,7 @@ begin
 	end process;
 
 	-- col_sel selection clock
-	process(clk, clk_en)
+	process(clk, clk_en, reset, keypress)
 	begin
 		if reset = '1' then
 			internal_state_sel <= 0;
@@ -63,7 +63,7 @@ begin
 	end process;
 
 	-- Keypress
-	process(row_sel, clk, clk_en)
+	process(row_sel, clk, clk_en, reset, keypress)
 	begin
 		if reset = '1' then
 			keypress <= '0';
@@ -76,7 +76,7 @@ begin
 	end process;
 
 	-- Mux for col_sel
-	process(internal_state_sel)
+	process(internal_state_sel, buf_col_sel)
 	begin
 		case internal_state_sel is
 			when 0 => buf_col_sel <= "0111";
@@ -89,7 +89,7 @@ begin
 	end process;
 
 	-- LUT selection
-	process(row_sel, buf_col_sel)
+	process(row_sel, buf_col_sel, key_address)
 	begin
 		key_address <= buf_col_sel & row_sel;
 		case key_address is
