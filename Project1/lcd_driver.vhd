@@ -34,7 +34,7 @@ entity lcd_driver is
         sys_fb       		: in std_logic;
         sys_en		 		: in std_logic;
 		sys_prog			: in std_logic;
-		address				: in std_logic;
+		address				: in std_logic_vector(7 downto 0);
         data		 		: in std_logic_vector(15 downto 0);
         data_out        	: out std_logic_vector(7 downto 0);
         enable_out      	: out std_logic;
@@ -115,7 +115,7 @@ begin
     process(clk)
     begin
 		if rising_edge(clk) and clk_enable = '1' and enable_sel = 3 then
-            if lut_sel = 47 then
+            if lut_sel = 45 then
                 lut_sel <= 10;
             else
                 lut_sel <= lut_sel + 1;
@@ -165,7 +165,7 @@ begin
         '0' when 3,
         '0' when others;
         
-    -- LUT for data_out and mode_select_out default is #ff and 0 respectively
+    -- LUT for data_out and mode_select_out default is #ff and 1 respectively
     process(lut_sel)
     begin
         case lut_sel is
@@ -177,7 +177,7 @@ begin
             when 4 => data_out <= x"38"; mode_select_out <= '0';  
             when 5 => data_out <= x"38"; mode_select_out <= '0';  
             when 6 => data_out <= x"01"; mode_select_out <= '0';  
-            when 7 => data_out <= x"0c"; mode_select_out <= '0';  
+            when 7 => data_out <= x"0C"; mode_select_out <= '0';  
             when 8 => data_out <= x"06"; mode_select_out <= '0';  
             when 9 => data_out <= x"80"; mode_select_out <= '0';
             -- Op/Prog			
@@ -190,7 +190,8 @@ begin
             when 16 => data_out <= sys_mode_ascii(6); mode_select_out <= '1';
             when 18 => data_out <= sys_mode_ascii(7); mode_select_out <= '1';
             -- Space
-            when 19 => data_out <= x"FE"; mode_select_out <= '1';  
+            -- when 19 => data_out <= x"72"; mode_select_out <= '1';
+			when 19 => data_out <= x"0C"; mode_select_out <= '0';
             -- System State
             when 20 => data_out <= sys_state_ascii(0); mode_select_out <= '1';
             when 21 => data_out <= sys_state_ascii(1); mode_select_out <= '1';
@@ -212,21 +213,21 @@ begin
             when 35 => data_out <= sys_en_ascii(6); mode_select_out <= '1';
             when 36 => data_out <= sys_en_ascii(7); mode_select_out <= '1';
             -- Space
-            when 37 => data_out <= x"FE"; mode_select_out <= '1';
+            -- when 37 => data_out <= x"72"; mode_select_out <= '1';
 			-- Address ex. x00
-			when 38 => data_out <= x"78"; mode_select_out <= '1';
-			when 39 => data_out <= hex_to_ascii(address(7 downto 4)); mode_select_out <= '1';
-			when 40 => data_out <= hex_to_ascii(address(3 downto 0)); mode_select_out <= '1';
+			when 37 => data_out <= x"78"; mode_select_out <= '1';
+			when 38 => data_out <= hex_to_ascii(address(7 downto 4)); mode_select_out <= '1';
+			when 39 => data_out <= hex_to_ascii(address(3 downto 0)); mode_select_out <= '1';
             -- Space
-			when 41 => data_out <= x"FE"; mode_select_out <= '1';
+			-- when 41 => data_out <= x"72"; mode_select_out <= '1';
 			-- Data ex. xA0A0
-			when 42 => data_out <= x"78"; mode_select_out <= '1';
-            when 43 => data_out <= hex_to_ascii(data(15 downto 12)); mode_select_out <= '1';
-            when 44 => data_out <= hex_to_ascii(data(11 downto 8)); mode_select_out <= '1';
-            when 45 => data_out <= hex_to_ascii(data(7 downto 4)); mode_select_out <= '1';
-            when 46 => data_out <= hex_to_ascii(data(3 downto 0)); mode_select_out <= '1';
-			-- Jump to first line after 'System'
-			when 47 => data_out <= x"87"; mode_select_out <= '0';
+			when 40 => data_out <= x"78"; mode_select_out <= '1';
+            when 41 => data_out <= hex_to_ascii(data(15 downto 12)); mode_select_out <= '1';
+            when 42 => data_out <= hex_to_ascii(data(11 downto 8)); mode_select_out <= '1';
+            when 43 => data_out <= hex_to_ascii(data(7 downto 4)); mode_select_out <= '1';
+            when 44 => data_out <= hex_to_ascii(data(3 downto 0)); mode_select_out <= '1';
+			-- Jump to first line
+			when 45 => data_out <= x"80"; mode_select_out <= '0';
             -- Catch errors
             when others => data_out <= x"FF"; mode_select_out <= '1';
         end case;
