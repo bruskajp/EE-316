@@ -116,7 +116,7 @@ begin
     process(clk)
     begin
 		if rising_edge(clk) and clk_enable = '1' and enable_sel = 3 then
-            if lut_sel = 45 then
+            if lut_sel = 43 then
                 lut_sel <= 10;
             else
                 lut_sel <= lut_sel + 1;
@@ -197,42 +197,39 @@ begin
             when 14 => data_out <= sys_mode_ascii(4); mode_select_out <= '1';
             when 15 => data_out <= sys_mode_ascii(5); mode_select_out <= '1';
             when 16 => data_out <= sys_mode_ascii(6); mode_select_out <= '1';
-            when 18 => data_out <= sys_mode_ascii(7); mode_select_out <= '1';
-            -- Space
-            when 19 => data_out <= x"72"; mode_select_out <= '1';
-			-- when 19 => data_out <= x"0c"; mode_select_out <= '0';
+            when 17 => data_out <= sys_mode_ascii(7); mode_select_out <= '1';
             -- System State
-            when 20 => data_out <= sys_state_ascii(0); mode_select_out <= '1';
-            when 21 => data_out <= sys_state_ascii(1); mode_select_out <= '1';
-            when 22 => data_out <= sys_state_ascii(2); mode_select_out <= '1';
-            when 23 => data_out <= sys_state_ascii(3); mode_select_out <= '1';
-            when 24 => data_out <= sys_state_ascii(4); mode_select_out <= '1';
-            when 25 => data_out <= sys_state_ascii(5); mode_select_out <= '1';
-            when 26 => data_out <= sys_state_ascii(6); mode_select_out <= '1';
-            when 27 => data_out <= sys_state_ascii(7); mode_select_out <= '1';
+            when 18 => data_out <= sys_state_ascii(0); mode_select_out <= '1';
+            when 19 => data_out <= sys_state_ascii(1); mode_select_out <= '1';
+            when 20 => data_out <= sys_state_ascii(2); mode_select_out <= '1';
+            when 21 => data_out <= sys_state_ascii(3); mode_select_out <= '1';
+            when 22 => data_out <= sys_state_ascii(4); mode_select_out <= '1';
+            when 23 => data_out <= sys_state_ascii(5); mode_select_out <= '1';
+            when 24 => data_out <= sys_state_ascii(6); mode_select_out <= '1';
+            when 25 => data_out <= sys_state_ascii(7); mode_select_out <= '1';
             -- Newline
-            when 28 => data_out <= x"C0"; mode_select_out <= '0'; 
+            when 26 => data_out <= x"C0"; mode_select_out <= '0'; 
             -- Enable / Disable
-            when 29 => data_out <= sys_en_ascii(0); mode_select_out <= '1';
-            when 30 => data_out <= sys_en_ascii(1); mode_select_out <= '1';
-            when 31 => data_out <= sys_en_ascii(2); mode_select_out <= '1';
-            when 32 => data_out <= sys_en_ascii(3); mode_select_out <= '1';
-            when 33 => data_out <= sys_en_ascii(4); mode_select_out <= '1';
-            when 34 => data_out <= sys_en_ascii(5); mode_select_out <= '1';
-            when 35 => data_out <= sys_en_ascii(6); mode_select_out <= '1';
-            when 36 => data_out <= sys_en_ascii(7); mode_select_out <= '1';
+            when 27 => data_out <= sys_en_ascii(0); mode_select_out <= '1';
+            when 28 => data_out <= sys_en_ascii(1); mode_select_out <= '1';
+            when 29 => data_out <= sys_en_ascii(2); mode_select_out <= '1';
+            when 30 => data_out <= sys_en_ascii(3); mode_select_out <= '1';
+            when 31 => data_out <= sys_en_ascii(4); mode_select_out <= '1';
+            when 32 => data_out <= sys_en_ascii(5); mode_select_out <= '1';
+            when 33 => data_out <= sys_en_ascii(6); mode_select_out <= '1';
+            when 34 => data_out <= sys_en_ascii(7); mode_select_out <= '1';
 			-- Address ex. x00
-			when 37 => data_out <= x"78"; mode_select_out <= '1';
-			when 38 => data_out <= hex_to_ascii(address(7 downto 4)); mode_select_out <= '1';
-			when 39 => data_out <= hex_to_ascii(address(3 downto 0)); mode_select_out <= '1';
+			when 35 => data_out <= x"78"; mode_select_out <= '1';
+			when 36 => data_out <= hex_to_ascii(address(7 downto 4)); mode_select_out <= '1';
+			when 37 => data_out <= hex_to_ascii(address(3 downto 0)); mode_select_out <= '1';
 			-- Data ex. xA0A0
-			when 40 => data_out <= x"78"; mode_select_out <= '1';
-            when 41 => data_out <= hex_to_ascii(data(15 downto 12)); mode_select_out <= '1';
-            when 42 => data_out <= hex_to_ascii(data(11 downto 8)); mode_select_out <= '1';
-            when 43 => data_out <= hex_to_ascii(data(7 downto 4)); mode_select_out <= '1';
-            when 44 => data_out <= hex_to_ascii(data(3 downto 0)); mode_select_out <= '1';
+			when 38 => data_out <= x"78"; mode_select_out <= '1';
+            when 39 => data_out <= hex_to_ascii(data(15 downto 12)); mode_select_out <= '1';
+            when 40 => data_out <= hex_to_ascii(data(11 downto 8)); mode_select_out <= '1';
+            when 41 => data_out <= hex_to_ascii(data(7 downto 4)); mode_select_out <= '1';
+            when 42 => data_out <= hex_to_ascii(data(3 downto 0)); mode_select_out <= '1';
 			-- Jump to first line
-			when 45 => data_out <= x"80"; mode_select_out <= '0';
+			when 43 => data_out <= x"80"; mode_select_out <= '0';
             -- Catch errors
             when others => data_out <= x"FF"; mode_select_out <= '1';
         end case;
