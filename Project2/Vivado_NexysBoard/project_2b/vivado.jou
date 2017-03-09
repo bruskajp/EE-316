@@ -1,0 +1,320 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Feb 07 12:29:07 2017
+# Process ID: 3452
+# Current directory: C:/Users/ulab/Documents/James Bruska/project_2b
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7872 C:\Users\ulab\Documents\James Bruska\project_2b\project_2b.xpr
+# Log file: C:/Users/ulab/Documents/James Bruska/project_2b/vivado.log
+# Journal file: C:/Users/ulab/Documents/James Bruska/project_2b\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.xpr}
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+delete_debug_core [get_debug_cores {u_ila_0 }]
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+create_debug_core u_ila_1 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_1]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_1]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_1]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_1]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_1]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_1]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list iClk_IBUF_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_1/clk]
+connect_debug_port u_ila_1/clk [get_nets [list oCLK_BUFG ]]
+set_property port_width 16 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {hex[0]} {hex[1]} {hex[2]} {hex[3]} {hex[4]} {hex[5]} {hex[6]} {hex[7]} {hex[8]} {hex[9]} {hex[10]} {hex[11]} {hex[12]} {hex[13]} {hex[14]} {hex[15]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list SDA_OBUF ]]
+set_property port_width 1 [get_debug_ports u_ila_1/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe0]
+connect_debug_port u_ila_1/probe0 [get_nets [list CSN_OBUF ]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+launch_simulation
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_simulation
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_simulation
+synth_design -rtl -name rtl_1
+launch_simulation
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_simulation
+source top_level.tcl
+run 250 us
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+add_force {/top_level/iClk} -radix bin {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/top_level/iReset} -radix hex {1 0ns}
+run 250 ms
+add_force {/top_level/iReset} -radix hex {0 0ns}
+remove_forces { {/top_level/clk} {/top_level/clk_enable} {/top_level/reset} {/top_level/DelayReset} {/top_level/DelayReset_n} {/top_level/iReset_deb} {/top_level/iCnt_en_toggle} {/top_level/iF_B_toggle} }
+add_force {/top_level/iCnt_en} -radix hex {1 0ns}
+add_force {/top_level/iF_B} -radix hex {1 0ns}
+add_wave {{/top_level/Inst_Interfacer/I2CMaster/reset_n}} {{/top_level/Inst_Interfacer/I2CMaster/ena}} {{/top_level/Inst_Interfacer/I2CMaster/addr}} {{/top_level/Inst_Interfacer/I2CMaster/data_wr}} {{/top_level/Inst_Interfacer/I2CMaster/ack_error}} {{/top_level/Inst_Interfacer/I2CMaster/sda}} {{/top_level/Inst_Interfacer/I2CMaster/scl}} 
+add_wave {{/top_level/Inst_Interfacer/CLK}} {{/top_level/Inst_Interfacer/data_in}} {{/top_level/Inst_Interfacer/sda}} {{/top_level/Inst_Interfacer/scl}} {{/top_level/Inst_Interfacer/state}} {{/top_level/Inst_Interfacer/reset}} {{/top_level/Inst_Interfacer/busy}} 
+run 250 ms
+run 2 s
+current_design synth_1
+close_design
+open_run impl_1
+close_design
+open_run synth_1 -name synth_1
+close_design
+open_run impl_1
+set_property PULLTYPE PULLUP [get_ports [list {An_OUT[7]} {An_OUT[6]} {An_OUT[5]} {An_OUT[4]} {An_OUT[3]} {An_OUT[2]} {An_OUT[1]} {An_OUT[0]}]]
+set_property PULLTYPE NONE [get_ports [list {An_OUT[7]} {An_OUT[6]} {An_OUT[5]} {An_OUT[4]} {An_OUT[3]} {An_OUT[2]} {An_OUT[1]} {An_OUT[0]}]]
+set_property PULLTYPE PULLUP [get_ports [list CSN]]
+set_property PULLTYPE NONE [get_ports [list CSN]]
+set_property PULLTYPE PULLUP [get_ports [list SDA]]
+set_property PULLTYPE PULLUP [get_ports [list SCL]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+close_design
+disconnect_hw_server localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server -url localhost:3121
+current_hw_target [get_hw_targets */xilinx_tcf/Digilent/210292710076A]
+set_property PARAM.FREQUENCY 15000000 [get_hw_targets */xilinx_tcf/Digilent/210292710076A]
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+refresh_hw_device [lindex [get_hw_devices] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+open_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+open_hw_target {localhost:3121/xilinx_tcf/Digilent/210292744045A}
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+refresh_hw_device [lindex [get_hw_devices] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+open_run synth_1 -name synth_1
+show_objects -name NET_ONLY [get_nets -hierarchical -top_net_of_hierarchical_group "*" ]
+delete_debug_core [get_debug_cores {u_ila_0 u_ila_1 }]
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+create_debug_core u_ila_1 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_1]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_1]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_1]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_1]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_1]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_1]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list oCLK_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_1/clk]
+connect_debug_port u_ila_1/clk [get_nets [list iClk_IBUF_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list CSN_OBUF ]]
+set_property port_width 3 [get_debug_ports u_ila_1/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe0]
+connect_debug_port u_ila_1/probe0 [get_nets [list {Inst_Interfacer/state[0]} {Inst_Interfacer/state[1]} {Inst_Interfacer/state[2]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 4 [get_debug_ports u_ila_1/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe1]
+connect_debug_port u_ila_1/probe1 [get_nets [list {Inst_Interfacer/I2CMaster/state[0]} {Inst_Interfacer/I2CMaster/state[1]} {Inst_Interfacer/I2CMaster/state[2]} {Inst_Interfacer/I2CMaster/state[3]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 4 [get_debug_ports u_ila_1/probe2]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe2]
+connect_debug_port u_ila_1/probe2 [get_nets [list {Inst_Interfacer/data_sec[0]} {Inst_Interfacer/data_sec[1]} {Inst_Interfacer/data_sec[2]} {Inst_Interfacer/data_sec[3]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 16 [get_debug_ports u_ila_1/probe3]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe3]
+connect_debug_port u_ila_1/probe3 [get_nets [list {hex[0]} {hex[1]} {hex[2]} {hex[3]} {hex[4]} {hex[5]} {hex[6]} {hex[7]} {hex[8]} {hex[9]} {hex[10]} {hex[11]} {hex[12]} {hex[13]} {hex[14]} {hex[15]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe4]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe4]
+connect_debug_port u_ila_1/probe4 [get_nets [list SDA_OBUF ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe5]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe5]
+connect_debug_port u_ila_1/probe5 [get_nets [list Inst_Interfacer/busy ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe6]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe6]
+connect_debug_port u_ila_1/probe6 [get_nets [list Inst_Interfacer/ena ]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+archive_project {C:/Users/ulab/Documents/James Bruska/project_2b.xpr.zip} -temp_dir {C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23} -force

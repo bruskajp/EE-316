@@ -1,0 +1,1419 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Feb 07 12:29:07 2017
+# Process ID: 3452
+# Current directory: C:/Users/ulab/Documents/James Bruska/project_2b
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7872 C:\Users\ulab\Documents\James Bruska\project_2b\project_2b.xpr
+# Log file: C:/Users/ulab/Documents/James Bruska/project_2b/vivado.log
+# Journal file: C:/Users/ulab/Documents/James Bruska/project_2b\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.xpr}
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp' for cell 'your_instance_name'
+INFO: [Netlist 29-17] Analyzing 70 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+
+open_run: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1183.172 ; gain = 326.969
+delete_debug_core [get_debug_cores {u_ila_0 }]
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+create_debug_core u_ila_1 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_1]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_1]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_1]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_1]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_1]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_1]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list iClk_IBUF_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_1/clk]
+connect_debug_port u_ila_1/clk [get_nets [list oCLK_BUFG ]]
+set_property port_width 16 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {hex[0]} {hex[1]} {hex[2]} {hex[3]} {hex[4]} {hex[5]} {hex[6]} {hex[7]} {hex[8]} {hex[9]} {hex[10]} {hex[11]} {hex[12]} {hex[13]} {hex[14]} {hex[15]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list SDA_OBUF ]]
+set_property port_width 1 [get_debug_ports u_ila_1/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe0]
+connect_debug_port u_ila_1/probe0 [get_nets [list CSN_OBUF ]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1183.172 ; gain = 0.000
+[Tue Feb 07 12:30:19 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2016.2
+  **** Build date : Jun  2 2016-16:57:03
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1219.363 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292710076A
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 1 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'top_level' in fileset 'sim_1'...
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/blk_mem_LUT.mif'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_level_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v" into library blk_mem_gen_v8_3_3
+INFO: [VRFC 10-311] analyzing module STATE_LOGIC_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_muxf7_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_clr_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_pre_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_ce_clr_v8_3
+INFO: [VRFC 10-311] analyzing module write_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module read_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_write_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_read_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_output_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_softecc_output_reg_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_mem_module
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/sim/blk_mem_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl -m64 --relax -prj top_level_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_VCOMP.vhd" into library xpm
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity i2c_master
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity univ_bin_counter
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TTL_Serial_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity sys_clk
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SPI_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Reset_Delay
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Nexys4_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity clk_enabler
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity btn_debounce_toggle
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Interfacer
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+Vivado Simulator 2016.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.2/bin/unwrapped/win64.o/xelab.exe -wto c7695f43c4d64b5c9de4bde37133c80a --debug typical --relax --mt 2 -L xil_defaultlib -L xpm -L blk_mem_gen_v8_3_3 -L unisims_ver -L unimacro_ver -L secureip --snapshot top_level_behav xil_defaultlib.top_level xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1625] value in initialization depends on signal min [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:23]
+ERROR: [VRFC 10-380] binding entity ttl_serial_display does not have generic ttl_driver [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:86]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:1]
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:1]
+[Tue Feb 07 13:45:45 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'top_level' in fileset 'sim_1'...
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/blk_mem_LUT.mif'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_level_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v" into library blk_mem_gen_v8_3_3
+INFO: [VRFC 10-311] analyzing module STATE_LOGIC_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_muxf7_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_clr_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_pre_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_ce_clr_v8_3
+INFO: [VRFC 10-311] analyzing module write_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module read_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_write_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_read_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_output_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_softecc_output_reg_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_mem_module
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/sim/blk_mem_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl -m64 --relax -prj top_level_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_VCOMP.vhd" into library xpm
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity i2c_master
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity univ_bin_counter
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TTL_Serial_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity sys_clk
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SPI_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Reset_Delay
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Nexys4_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity clk_enabler
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity btn_debounce_toggle
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Interfacer
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+Vivado Simulator 2016.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.2/bin/unwrapped/win64.o/xelab.exe -wto c7695f43c4d64b5c9de4bde37133c80a --debug typical --relax --mt 2 -L xil_defaultlib -L xpm -L blk_mem_gen_v8_3_3 -L unisims_ver -L unimacro_ver -L secureip --snapshot top_level_behav xil_defaultlib.top_level xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1625] value in initialization depends on signal min [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:23]
+ERROR: [VRFC 10-380] binding entity ttl_serial_display does not have generic ttl_driver [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:86]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_runs impl_1 -jobs 4
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Tue Feb 07 13:47:29 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'top_level' in fileset 'sim_1'...
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/blk_mem_LUT.mif'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_level_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v" into library blk_mem_gen_v8_3_3
+INFO: [VRFC 10-311] analyzing module STATE_LOGIC_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_muxf7_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_clr_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_pre_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_ce_clr_v8_3
+INFO: [VRFC 10-311] analyzing module write_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module read_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_write_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_read_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_output_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_softecc_output_reg_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_mem_module
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/sim/blk_mem_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl -m64 --relax -prj top_level_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_VCOMP.vhd" into library xpm
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity i2c_master
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity univ_bin_counter
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TTL_Serial_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity sys_clk
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SPI_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Reset_Delay
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Nexys4_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity clk_enabler
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity btn_debounce_toggle
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Interfacer
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+Vivado Simulator 2016.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.2/bin/unwrapped/win64.o/xelab.exe -wto c7695f43c4d64b5c9de4bde37133c80a --debug typical --relax --mt 2 -L xil_defaultlib -L xpm -L blk_mem_gen_v8_3_3 -L unisims_ver -L unimacro_ver -L secureip --snapshot top_level_behav xil_defaultlib.top_level xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1625] value in initialization depends on signal min [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:23]
+ERROR: [VRFC 10-380] binding entity ttl_serial_display does not have generic ttl_driver [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:86]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+synth_design -rtl -name rtl_1
+Command: synth_design -rtl -name rtl_1
+Starting synth_design
+Using part: xc7a100tcsg324-1
+Top: top_level
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:02:19 ; elapsed = 01:24:47 . Memory (MB): peak = 1345.586 ; gain = 1137.699
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_level' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:25]
+	Parameter CNTR_MAX bound to: 16'b0000000000001001 
+INFO: [Synth 8-3491] module 'btn_debounce_toggle' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:32' bound to instance 'Inst_iCnt_en_debounce' of component 'btn_debounce_toggle' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:136]
+INFO: [Synth 8-638] synthesizing module 'btn_debounce_toggle' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:41]
+	Parameter CNTR_MAX bound to: 16'b0000000000001001 
+INFO: [Synth 8-256] done synthesizing module 'btn_debounce_toggle' (1#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:41]
+	Parameter CNTR_MAX bound to: 16'b0000000000001001 
+INFO: [Synth 8-3491] module 'btn_debounce_toggle' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:32' bound to instance 'Inst_iReset_debounce' of component 'btn_debounce_toggle' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:144]
+	Parameter CNTR_MAX bound to: 16'b0000000000001001 
+INFO: [Synth 8-3491] module 'btn_debounce_toggle' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd:32' bound to instance 'Inst_iF_B_debounce' of component 'btn_debounce_toggle' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:152]
+INFO: [Synth 8-3491] module 'Reset_Delay' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd:8' bound to instance 'Inst_clk_Reset_Delay' of component 'Reset_Delay' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'Reset_Delay' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'Reset_Delay' (2#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd:16]
+	Parameter cnt_max bound to: 9999999 - type: integer 
+INFO: [Synth 8-3491] module 'clk_enabler' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd:7' bound to instance 'Inst_clk_enabler' of component 'clk_enabler' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:167]
+INFO: [Synth 8-638] synthesizing module 'clk_enabler' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd:19]
+	Parameter cnt_max bound to: 9999999 - type: integer 
+WARNING: [Synth 8-614] signal 'reset' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'clk_enabler' (3#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd:19]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'univ_bin_counter' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:9' bound to instance 'Inst_Univ_Counter' of component 'univ_bin_counter' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:176]
+INFO: [Synth 8-638] synthesizing module 'univ_bin_counter' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:22]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'univ_bin_counter' (4#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:22]
+	Parameter REF_CLK bound to: 100000000 - type: integer 
+	Parameter OUT_CLK bound to: 10000000 - type: integer 
+INFO: [Synth 8-3491] module 'sys_clk' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd:6' bound to instance 'Inst_sys_clk' of component 'sys_clk' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:192]
+INFO: [Synth 8-638] synthesizing module 'sys_clk' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd:18]
+	Parameter REF_CLK bound to: 100000000 - type: integer 
+	Parameter OUT_CLK bound to: 10000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sys_clk' (5#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd:18]
+INFO: [Synth 8-3491] module 'Nexys4_Display' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:34' bound to instance 'Inst_Hex_Counter' of component 'Nexys4_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:202]
+INFO: [Synth 8-638] synthesizing module 'Nexys4_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:42]
+INFO: [Synth 8-226] default block is never used [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:116]
+INFO: [Synth 8-226] default block is never used [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:138]
+INFO: [Synth 8-256] done synthesizing module 'Nexys4_Display' (6#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd:42]
+	Parameter TTL_Driver bound to: 16'b0010100100011110 
+INFO: [Synth 8-3491] module 'TTL_Serial_Display' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:5' bound to instance 'Inst_TTL_Display' of component 'TTL_Serial_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:210]
+INFO: [Synth 8-638] synthesizing module 'TTL_Serial_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:12]
+WARNING: [Synth 8-614] signal 'extend' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:45]
+WARNING: [Synth 8-614] signal 'HEX2_Data1' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data2' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data3' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data4' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'TTL_Serial_Display' (7#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd:12]
+INFO: [Synth 8-3491] module 'SPI_Display' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:5' bound to instance 'Inst_SPI_Display' of component 'SPI_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:218]
+INFO: [Synth 8-638] synthesizing module 'SPI_Display' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:14]
+WARNING: [Synth 8-614] signal 'extend' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:46]
+WARNING: [Synth 8-614] signal 'HEX2_Data1' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data2' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data3' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:54]
+WARNING: [Synth 8-614] signal 'HEX2_Data4' is read in the process but is not in the sensitivity list [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'SPI_Display' (8#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd:14]
+INFO: [Synth 8-3491] module 'blk_mem_LUT' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/realtime/blk_mem_LUT_stub.vhdl:5' bound to instance 'your_instance_name' of component 'blk_mem_LUT' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:226]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_LUT' [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/realtime/blk_mem_LUT_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'Interfacer' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:5' bound to instance 'Inst_Interfacer' of component 'interfacer' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:233]
+INFO: [Synth 8-638] synthesizing module 'Interfacer' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:13]
+INFO: [Synth 8-3491] module 'i2c_master' declared at 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd:34' bound to instance 'I2CMaster' of component 'i2c_master' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'i2c_master' [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd:52]
+	Parameter input_clk bound to: 50000000 - type: integer 
+	Parameter bus_clk bound to: 100000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'i2c_master' (9#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd:52]
+INFO: [Synth 8-226] default block is never used [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:64]
+INFO: [Synth 8-256] done synthesizing module 'Interfacer' (10#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'top_level' (11#1) [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:25]
+WARNING: [Synth 8-3331] design univ_bin_counter has unconnected port load
+WARNING: [Synth 8-3331] design univ_bin_counter has unconnected port d[3]
+WARNING: [Synth 8-3331] design univ_bin_counter has unconnected port d[2]
+WARNING: [Synth 8-3331] design univ_bin_counter has unconnected port d[1]
+WARNING: [Synth 8-3331] design univ_bin_counter has unconnected port d[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:02:20 ; elapsed = 01:24:48 . Memory (MB): peak = 1368.125 ; gain = 1160.238
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:02:20 ; elapsed = 01:24:48 . Memory (MB): peak = 1368.125 ; gain = 1160.238
+---------------------------------------------------------------------------------
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp' for cell 'your_instance_name'
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 4 OBUFs to IO ports without IO buffers.
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+WARNING: [Vivado 12-507] No nets matched 'SDA_OBUF'. [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc:257]
+WARNING: [Vivado 12-507] No nets matched 'CSN_OBUF'. [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc:258]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/top_level_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_level_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_level_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:02:24 ; elapsed = 01:24:51 . Memory (MB): peak = 1492.191 ; gain = 1284.305
+49 Infos, 19 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 1492.191 ; gain = 146.605
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'top_level' in fileset 'sim_1'...
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/blk_mem_LUT.mif'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_level_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v" into library blk_mem_gen_v8_3_3
+INFO: [VRFC 10-311] analyzing module STATE_LOGIC_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_muxf7_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_clr_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_pre_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_ce_clr_v8_3
+INFO: [VRFC 10-311] analyzing module write_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module read_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_write_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_read_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_output_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_softecc_output_reg_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_mem_module
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/sim/blk_mem_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl -m64 --relax -prj top_level_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_VCOMP.vhd" into library xpm
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity i2c_master
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity univ_bin_counter
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TTL_Serial_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity sys_clk
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SPI_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Reset_Delay
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Nexys4_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity clk_enabler
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity btn_debounce_toggle
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Interfacer
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+Vivado Simulator 2016.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.2/bin/unwrapped/win64.o/xelab.exe -wto c7695f43c4d64b5c9de4bde37133c80a --debug typical --relax --mt 2 -L xil_defaultlib -L xpm -L blk_mem_gen_v8_3_3 -L unisims_ver -L unimacro_ver -L secureip --snapshot top_level_behav xil_defaultlib.top_level xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1625] value in initialization depends on signal min [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:23]
+ERROR: [VRFC 10-380] binding entity ttl_serial_display does not have generic ttl_driver [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:86]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Tue Feb 07 13:55:12 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Tue Feb 07 13:55:12 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Tue Feb 07 13:55:46 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Tue Feb 07 13:55:46 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+launch_simulation
+INFO: [USF-XSim-27] Simulation object is 'sim_1'
+INFO: [USF-XSim-37] Inspecting design source files for 'top_level' in fileset 'sim_1'...
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/blk_mem_LUT.mif'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-25] Exported 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/MyROM.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+"xvlog -m64 --relax -prj top_level_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_base.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_base
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dpdistram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dpdistram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_dprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_dprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sdpram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_spram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_spram
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_sprom.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_sprom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_memory/hdl/xpm_memory_tdpram.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module xpm_memory_tdpram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v" into library blk_mem_gen_v8_3_3
+INFO: [VRFC 10-311] analyzing module STATE_LOGIC_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_muxf7_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_clr_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_pre_v8_3
+INFO: [VRFC 10-311] analyzing module beh_vlog_ff_ce_clr_v8_3
+INFO: [VRFC 10-311] analyzing module write_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module read_netlist_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_write_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_read_wrapper_beh_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_output_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_softecc_output_reg_stage
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3_mem_module
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_v8_3_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/sim/blk_mem_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl -m64 --relax -prj top_level_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_VCOMP.vhd" into library xpm
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/i2c_master_2.1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity i2c_master
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity univ_bin_counter
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/TTL_Serial_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TTL_Serial_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/sys_clk.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity sys_clk
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/SPI_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SPI_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/reset_delay.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Reset_Delay
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Nexys4_Display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Nexys4_Display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/clk_enabler.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity clk_enabler
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/btn_debounce_toggle.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity btn_debounce_toggle
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Interfacer
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+Vivado Simulator 2016.2
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.2/bin/unwrapped/win64.o/xelab.exe -wto c7695f43c4d64b5c9de4bde37133c80a --debug typical --relax --mt 2 -L xil_defaultlib -L xpm -L blk_mem_gen_v8_3_3 -L unisims_ver -L unimacro_ver -L secureip --snapshot top_level_behav xil_defaultlib.top_level xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1625] value in initialization depends on signal min [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/univ_bin_counter.vhd:23]
+WARNING: [VRFC 10-1783] select index 30 into current_contents is out of bounds [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v:2414]
+WARNING: [VRFC 10-1783] select index 62 into current_contents is out of bounds [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.ip_user_files/ipstatic/blk_mem_gen_v8_3_3/simulation/blk_mem_gen_v8_3.v:2415]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling architecture behavioral of entity xil_defaultlib.btn_debounce_toggle [\btn_debounce_toggle(cntr_max="0...]
+Compiling architecture arch of entity xil_defaultlib.Reset_Delay [reset_delay_default]
+Compiling architecture behv of entity xil_defaultlib.clk_enabler [\clk_enabler(cnt_max=9999999)\]
+Compiling architecture arch of entity xil_defaultlib.univ_bin_counter [\univ_bin_counter(n=4)\]
+Compiling architecture arch of entity xil_defaultlib.sys_clk [\sys_clk(ref_clk=100000000)\]
+Compiling architecture behavioral of entity xil_defaultlib.Nexys4_Display [nexys4_display_default]
+Compiling architecture behavioral of entity xil_defaultlib.TTL_Serial_Display [ttl_serial_display_default]
+Compiling architecture behavioral of entity xil_defaultlib.SPI_Display [spi_display_default]
+Compiling module blk_mem_gen_v8_3_3.blk_mem_gen_v8_3_3_output_stage(...
+Compiling module blk_mem_gen_v8_3_3.blk_mem_gen_v8_3_3_output_stage(...
+Compiling module blk_mem_gen_v8_3_3.blk_mem_gen_v8_3_3_softecc_outpu...
+Compiling module blk_mem_gen_v8_3_3.blk_mem_gen_v8_3_3_mem_module(C_...
+Compiling module blk_mem_gen_v8_3_3.blk_mem_gen_v8_3_3(C_FAMILY="art...
+Compiling module xil_defaultlib.blk_mem_LUT
+Compiling architecture logic of entity xil_defaultlib.i2c_master [i2c_master_default]
+Compiling architecture behavioural of entity xil_defaultlib.Interfacer [interfacer_default]
+Compiling architecture structural of entity xil_defaultlib.top_level
+Built simulation snapshot top_level_behav
+
+****** Webtalk v2016.2 (64-bit)
+  **** SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+  **** IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source C:/Users/ulab/Documents/James -notrace
+invalid command name "******"
+ambiguous command name "******": after append apply array auto_execok auto_import auto_load auto_load_index auto_qualify binary break case catch cd chan clock close close_msg_db cmd concat config_webtalk continue create_msg_db create_property dict encoding eof error eval exec exit expr fblocked fconfigure fcopy file fileevent flush for foreach format get_msg_config get_param get_property gets glob global help history if incr info interp join lappend lassign lindex linsert lint_files list list_param list_property list_property_value llength load load_msg_db lrange lrepeat lreplace lreverse lsearch lset lsort namespace open package pid proc puts pwd read regexp register_proc regsub rename report_environment report_param report_property reset_msg_config reset_msg_count reset_param reset_property return scan seek send_msg_id set set_msg_config set_param set_property socket source split string subst switch tclLog tell time trace unknown unload unregister_proc unset update uplevel upvar variable version vwait webtalk_add_data webtalk_dump_data webtalk_init webtalk_register_client webtalk_terminate webtalk_transmit while
+    while executing
+"****** Webtalk v2016.2 (64-bit)"
+    (file "C:/Users/ulab/Documents/James" line 2)
+INFO: [Common 17-206] Exiting Webtalk at Tue Feb 07 14:04:54 2017...
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.sim/sim_1/behav'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "top_level_behav -key {Behavioral:sim_1:Functional:top_level} -tclbatch {top_level.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2016.2
+Time resolution is 1 ps
+source top_level.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module top_level.your_instance_name.inst.native_mem_module.blk_mem_gen_v8_3_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_level_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1508.816 ; gain = 0.000
+run 250 us
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+run 250 ms
+add_force {/top_level/iClk} -radix bin {0 0ns} {1 5000ps} -repeat_every 10000ps
+add_force {/top_level/iReset} -radix hex {1 0ns}
+run 250 ms
+run: Time (s): cpu = 00:00:33 ; elapsed = 00:01:42 . Memory (MB): peak = 1508.816 ; gain = 0.000
+add_force {/top_level/iReset} -radix hex {0 0ns}
+remove_forces { {/top_level/clk} {/top_level/clk_enable} {/top_level/reset} {/top_level/DelayReset} {/top_level/DelayReset_n} {/top_level/iReset_deb} {/top_level/iCnt_en_toggle} {/top_level/iF_B_toggle} }
+add_force {/top_level/iCnt_en} -radix hex {1 0ns}
+add_force {/top_level/iF_B} -radix hex {1 0ns}
+add_wave {{/top_level/Inst_Interfacer/I2CMaster/reset_n}} {{/top_level/Inst_Interfacer/I2CMaster/ena}} {{/top_level/Inst_Interfacer/I2CMaster/addr}} {{/top_level/Inst_Interfacer/I2CMaster/data_wr}} {{/top_level/Inst_Interfacer/I2CMaster/ack_error}} {{/top_level/Inst_Interfacer/I2CMaster/sda}} {{/top_level/Inst_Interfacer/I2CMaster/scl}} 
+add_wave {{/top_level/Inst_Interfacer/CLK}} {{/top_level/Inst_Interfacer/data_in}} {{/top_level/Inst_Interfacer/sda}} {{/top_level/Inst_Interfacer/scl}} {{/top_level/Inst_Interfacer/state}} {{/top_level/Inst_Interfacer/reset}} {{/top_level/Inst_Interfacer/busy}} 
+run 250 ms
+run: Time (s): cpu = 00:00:28 ; elapsed = 00:01:39 . Memory (MB): peak = 1518.258 ; gain = 0.000
+run 2 s
+run: Time (s): cpu = 00:01:49 ; elapsed = 00:06:27 . Memory (MB): peak = 1518.258 ; gain = 0.000
+current_design synth_1
+close_design
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 186 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/.Xil/Vivado-4100-ul-23/dbg_hub_CV.0/out/xsdbm.xdc:11]
+get_clocks: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1949.629 ; gain = 431.371
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.290 . Memory (MB): peak = 1955.457 ; gain = 1.332
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.290 . Memory (MB): peak = 1955.457 ; gain = 1.332
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 79 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRLC32E, SRL16E): 72 instances
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+  RAM32M => RAM32M (RAMS32, RAMS32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32): 6 instances
+
+open_run: Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 2020.660 ; gain = 502.402
+ERROR: [Common 17-165] Too many positional options when parsing 'Bruska/project_2b/project_2b.runs/impl_1/top_level_power_routed.rpx', please type 'open_report -help' for usage info.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'CSN'; it is not accessible from the fabric routing.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'CSN'; it is not accessible from the fabric routing.
+close_design
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp' for cell 'your_instance_name'
+INFO: [Netlist 29-17] Analyzing 70 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+
+close_design
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 186 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/.Xil/Vivado-4100-ul-23/dbg_hub_CV.0/out/xsdbm.xdc:11]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.290 . Memory (MB): peak = 2046.430 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.290 . Memory (MB): peak = 2046.430 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 79 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRLC32E, SRL16E): 72 instances
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+  RAM32M => RAM32M (RAMS32, RAMS32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32): 6 instances
+
+ERROR: [Common 17-165] Too many positional options when parsing 'Bruska/project_2b/project_2b.runs/impl_1/top_level_power_routed.rpx', please type 'open_report -help' for usage info.
+set_property PULLTYPE PULLUP [get_ports [list {An_OUT[7]} {An_OUT[6]} {An_OUT[5]} {An_OUT[4]} {An_OUT[3]} {An_OUT[2]} {An_OUT[1]} {An_OUT[0]}]]
+set_property PULLTYPE NONE [get_ports [list {An_OUT[7]} {An_OUT[6]} {An_OUT[5]} {An_OUT[4]} {An_OUT[3]} {An_OUT[2]} {An_OUT[1]} {An_OUT[0]}]]
+set_property PULLTYPE PULLUP [get_ports [list CSN]]
+set_property PULLTYPE NONE [get_ports [list CSN]]
+set_property PULLTYPE PULLUP [get_ports [list SDA]]
+set_property PULLTYPE PULLUP [get_ports [list SCL]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 14:32:28 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+close_design
+disconnect_hw_server localhost:3121
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server -url localhost:3121
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+current_hw_target [get_hw_targets */xilinx_tcf/Digilent/210292710076A]
+set_property PARAM.FREQUENCY 15000000 [get_hw_targets */xilinx_tcf/Digilent/210292710076A]
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292710076A
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 1 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 14:45:36 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 14:46:45 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Tue Feb 07 14:46:45 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:1]
+[Tue Feb 07 15:11:29 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Tue Feb 07 15:12:07 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 186 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+INFO: [Timing 38-35] Done setting XDC timing constraints. [c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/.Xil/Vivado-968-ul-23/dbg_hub_CV.0/out/xsdbm.xdc:11]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23/dcp/top_level.xdc]
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.298 . Memory (MB): peak = 2121.867 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.299 . Memory (MB): peak = 2121.867 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 79 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRLC32E, SRL16E): 72 instances
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+  RAM32M => RAM32M (RAMS32, RAMS32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32): 6 instances
+
+ERROR: [Common 17-165] Too many positional options when parsing 'Bruska/project_2b/project_2b.runs/impl_1/top_level_power_routed.rpx', please type 'open_report -help' for usage info.
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/Interfacer.vhd:1]
+[Tue Feb 07 15:27:45 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Tue Feb 07 15:28:37 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210292710076A
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 15:59:33 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 17:52:24 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Tue Feb 07 17:52:24 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292710076A
+ERROR: [Labtools 27-2270] Target localhost:3121/xilinx_tcf/Digilent/210292710076A is no longer available.
+Check cable connectivity and that the target board is powered up then
+use the disconnect_hw_server and connect_hw_server to re-register this hardware target.
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292710076A
+ERROR: [Labtools 27-2270] Target localhost:3121/xilinx_tcf/Digilent/210292710076A is no longer available.
+Check cable connectivity and that the target board is powered up then
+use the disconnect_hw_server and connect_hw_server to re-register this hardware target.
+open_hw_target {localhost:3121/xilinx_tcf/Digilent/210292744045A}
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292744045A
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+ERROR: [Xicom 50-38] xicom: Core access failed. Check cable connectivity and that the target board is powered up then use the disconnect_hw_server and connect_hw_server to re-initialize the hardware target. Use open_hw_target to re-register the hardware device.
+ERROR: [Xicom 50-38] xicom: Device:0, user chain number:0, slave index:0, is not a valid CseXsdb Slave core.
+ERROR: [Labtools 27-3176] hw_server failed during internal command.
+Resolution: Check that the hw_server is running and the hardware connectivity to the target
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+CRITICAL WARNING: [Labtools 27-1433] Device xc7a100t (JTAG device index = 0) is programmed with a design that has an unrecognizable debug core (slave type = 0) at user chain = 0, index = 0.
+Resolution: 
+1) Ensure that the clock signal connected to the debug core and/or debug hub is clean and free-running.
+2) Ensure that the clock connected to the debug core and/or debug hub meets all timing constraints.
+3) Ensure that the clock connected to debug core and/or debug hub is faster than the JTAG clock frequency.
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 18:11:03 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Tue Feb 07 18:11:03 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+INFO: [HDL 9-1061] Parsing VHDL file "C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd" into library xil_defaultlib [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/imports/Downloads/top_level.vhd:1]
+[Tue Feb 07 18:34:42 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Tue Feb 07 18:36:35 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Tue Feb 07 18:44:51 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210292744045A
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Wed Feb 08 16:15:45 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Wed Feb 08 16:15:45 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292710076A
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_2 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Wed Feb 08 16:37:06 2017] Launched synth_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/synth_1/runme.log
+[Wed Feb 08 16:37:06 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1974] Mismatch between the design programmed into the device xc7a100t_0 and the probes file C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx.
+The device design has 0 ILA core(s) and 0 VIO core(s). The probes file has 2 ILA core(s) and 0 VIO core(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file OR
+2. Goto device properties and associate the correct probes file with the programming file already programmed in the device.
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp' for cell 'your_instance_name'
+INFO: [Netlist 29-17] Analyzing 70 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+Finished Parsing XDC File [C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/constrs_1/imports/Downloads/Nexys4DDR_Master.xdc]
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'c:/Users/ulab/Documents/James Bruska/project_2b/project_2b.srcs/sources_1/ip/blk_mem_LUT/blk_mem_LUT.dcp'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instances
+
+show_objects -name NET_ONLY [get_nets -hierarchical -top_net_of_hierarchical_group "*" ]
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[8]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[7]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[6]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[3]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[14]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[13]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[12]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[11]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[0]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[9]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[8]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[7]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[5]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[6]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[4]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[3]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[2]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[1]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[16]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[13]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[12]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[11]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[10]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[9]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[8]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[16]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[7]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[6]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[3]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[34]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[32]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[31]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[2]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[29]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[27]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[25]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[24]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[23]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[22]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[21]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[20]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[19]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[18]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[17]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[16]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[15]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[14]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[13]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[12]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[11]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[0]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[9]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[8]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[5]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[4]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[15]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[36]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[34]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[33]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[1]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[32]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[31]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[2]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[29]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[27]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[26]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[24]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[23]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[22]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[20]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[1]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[19]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[18]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[17]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[15]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[5]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[14]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[13]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[12]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[10]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[0]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[26]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[25]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[2]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[10]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[35]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[10]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[4]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[15]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[30]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[4]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[5]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[21]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[16]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[28]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport0_o_0[11]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport0_i_0[14]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[30]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_oport1_i_1[9]'; it was auto-generated for ChipScope.
+CRITICAL WARNING: [Chipscope 16-3] Cannot debug net 'sl_iport1_o_1[28]'; it was auto-generated for ChipScope.
+INFO: [Common 17-14] Message 'Chipscope 16-3' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+delete_debug_core [get_debug_cores {u_ila_0 u_ila_1 }]
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+create_debug_core u_ila_1 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_1]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_1]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_1]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_1]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_1]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_1]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_1]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list oCLK_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_1/clk]
+connect_debug_port u_ila_1/clk [get_nets [list iClk_IBUF_BUFG ]]
+set_property port_width 1 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list CSN_OBUF ]]
+set_property port_width 3 [get_debug_ports u_ila_1/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe0]
+connect_debug_port u_ila_1/probe0 [get_nets [list {Inst_Interfacer/state[0]} {Inst_Interfacer/state[1]} {Inst_Interfacer/state[2]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 4 [get_debug_ports u_ila_1/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe1]
+connect_debug_port u_ila_1/probe1 [get_nets [list {Inst_Interfacer/I2CMaster/state[0]} {Inst_Interfacer/I2CMaster/state[1]} {Inst_Interfacer/I2CMaster/state[2]} {Inst_Interfacer/I2CMaster/state[3]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 4 [get_debug_ports u_ila_1/probe2]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe2]
+connect_debug_port u_ila_1/probe2 [get_nets [list {Inst_Interfacer/data_sec[0]} {Inst_Interfacer/data_sec[1]} {Inst_Interfacer/data_sec[2]} {Inst_Interfacer/data_sec[3]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 16 [get_debug_ports u_ila_1/probe3]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe3]
+connect_debug_port u_ila_1/probe3 [get_nets [list {hex[0]} {hex[1]} {hex[2]} {hex[3]} {hex[4]} {hex[5]} {hex[6]} {hex[7]} {hex[8]} {hex[9]} {hex[10]} {hex[11]} {hex[12]} {hex[13]} {hex[14]} {hex[15]} ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe4]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe4]
+connect_debug_port u_ila_1/probe4 [get_nets [list SDA_OBUF ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe5]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe5]
+connect_debug_port u_ila_1/probe5 [get_nets [list Inst_Interfacer/busy ]]
+create_debug_port u_ila_1 probe
+set_property port_width 1 [get_debug_ports u_ila_1/probe6]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_1/probe6]
+connect_debug_port u_ila_1/probe6 [get_nets [list Inst_Interfacer/ena ]]
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 2220.801 ; gain = 0.000
+[Wed Feb 08 18:15:03 2017] Launched impl_1...
+Run output will be captured here: C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/runme.log
+set_property PROBES.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Documents/James Bruska/project_2b/project_2b.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-2302] Device xc7a100t (JTAG device index = 0) is programmed with a design that has 2 ILA core(s).
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2017-Feb-08 18:23:37
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_0"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2017-Feb-08 18:23:37
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2017-Feb-08 18:25:53
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2017-Feb-08 18:25:53
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_2' trigger was armed at 2017-Feb-08 18:29:52
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a100t_0] -filter {CELL_NAME=~"u_ila_1"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_2' triggered at 2017-Feb-08 18:29:52
+archive_project {C:/Users/ulab/Documents/James Bruska/project_2b.xpr.zip} -temp_dir {C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23} -force
+INFO: [Coretcl 2-137] starting archive...
+INFO: [Coretcl 2-1499] Saving project copy to temporary location 'C:/Users/ulab/Documents/James Bruska/project_2b/.Xil/Vivado-3452-ul-23' for archiving project
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+INFO: [Coretcl 2-1211] Creating project copy for archival...
+INFO: [Coretcl 2-1213] Including run results for 'synth_1'
+INFO: [Coretcl 2-1213] Including run results for 'blk_mem_LUT_synth_1'
+INFO: [Coretcl 2-1213] Including run results for 'impl_1'
+INFO: [Coretcl 2-133] re-setting run 'blk_mem_LUT_impl_1'...
+INFO: [Coretcl 2-1212] Importing remotely added design sources and verilog include files (if any)...
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'blk_mem_LUT'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'blk_mem_LUT'
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'
