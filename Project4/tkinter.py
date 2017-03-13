@@ -4,7 +4,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from math import *
 
-NUM_DATA_POINTS = 5
+NUM_DATA_POINTS = 9
 #NUM_DATA_POINTS = 11520
 
 
@@ -59,8 +59,9 @@ class Graph:
 
     def getNewData(self):
         for i in range(NUM_DATA_POINTS):
-            val = input("Input num: ")
-            self.data[i] = val
+        #    val = input("Input num: ")
+        #    self.data[i] = val
+            self.data[i] = np.sin(pi*i/4)
         #self.period = input("Input period: ")    
 
     def update(self):
@@ -93,8 +94,6 @@ class FourierGui:
         self.frame2 = Frame(self.master2)
         self.graphSignal1 = FourierAmpGraph(self.master2, "Fourier Amplitude of Signal 2", dataSig2, periodSig2)
         self.graphSignal2 = FourierPhaseGraph(self.master2, "Fourier Phase of Signal 2", dataSig2, periodSig2)
-        button1 = Button(master=self.master2, text='Close Window', command=self.close_windows)
-        button1.pack(side=BOTTOM)
         self.frame2.pack()
         
 
@@ -118,7 +117,9 @@ class FourierAmpGraph:
         self.period = 0.5
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
-        self.im = self.axes.plot(range(NUM_DATA_POINTS), [abs(x) for x in self.data]) # edit this
+        data = [np.absolute(x) for x in self.data]
+        self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
+        self.im = self.axes.axis([-1, NUM_DATA_POINTS, -1, max(data)+1])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
@@ -136,7 +137,9 @@ class FourierPhaseGraph:
         self.period = 0.5
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
-        self.im = self.axes.plot(range(NUM_DATA_POINTS), [np.angle(x) for x in self.data]) # edit this
+        data = [np.angle(x) for x in self.data]
+        self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
+        self.im = self.axes.axis([-1, NUM_DATA_POINTS, min(data)-1, max(data)+1])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
