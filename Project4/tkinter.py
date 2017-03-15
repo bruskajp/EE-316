@@ -1,48 +1,122 @@
 import numpy as np
+
+from math import *
 from Tkinter import *
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from math import *
+from classes.keyboard import MySerial
 
-NUM_DATA_POINTS = 9
-#NUM_DATA_POINTS = 11520
-
-
+#NUM_DATA_POINTS = 256
+#NUM_DATA_POINTS = 64*32
+NUM_DATA_POINTS = 11520
 
 """
-    TODO:   Single vs Dual
-            Zoom in and Zoom out
-            Check FFT phase and mag formulas
-            Add in serial component
+    TODO:   Do units need to change?
 """
-
 
 
 class GraphGui:
 
     def __init__(self):
-        button1 = Button(master=top, text='Get New Data', command=self.update)
-        button1.pack(side=TOP)
-        button1 = Button(master=top, text='DFFT on Signals', command=self.fourierSigs)
-        button1.pack(side=TOP)
-        self.graphSignal1 = Graph(top, "Signal 1")
-        self.graphSignal2 = Graph(top, "Signal 2")
-        button = Button(master=top, text='Quit', command=sys.exit)
-        button.pack(side=BOTTOM)
+        self.leftSideFrame = Frame(master = top, bg="#444444")
+        self.leftSideFrame.pack(side=LEFT, padx=50)
+        self.rightSideFrame = Frame(master = top)
+        self.rightSideFrame.pack(side=RIGHT)
+        
+        self.graphSignal1 = Graph(self.rightSideFrame, "Signal 1")
+        self.graphSignal2 = Graph(self.rightSideFrame, "Signal 2")
+        
+        button = Button(master=self.leftSideFrame, text='Get New Data', width=17, command=self.update)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='DFFT on Signals', width=17, command=self.fourierSigs)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='Trace Signal 1 and 2', width=17, command=self.setDualTrace)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='Trace Signal 1', width=17, command=self.setSingleTrace1)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='Trace Signal 2', width=17, command=self.setSingleTrace2)
+        button.pack(side=TOP, pady=5)
+        
+        self.xMin = StringVar()
+        entry = Entry(master=self.leftSideFrame, textvariable=self.xMin)
+        entry.pack(side=TOP, pady=5)
+        self.xMin.set("x min")
+        self.xMax = StringVar()
+        entry = Entry(master=self.leftSideFrame, textvariable=self.xMax)
+        entry.pack(side=TOP, pady=5)
+        self.xMax.set("x max")
+        self.yMin = StringVar()
+        entry = Entry(master=self.leftSideFrame, textvariable=self.yMin)
+        entry.pack(side=TOP, pady=5)
+        self.yMin.set("y min")
+        self.yMax = StringVar()
+        entry = Entry(master=self.leftSideFrame, textvariable=self.yMax)
+        entry.pack(side=TOP, pady=5)
+        self.yMax.set("y max")
+       
+        button = Button(master=self.leftSideFrame, text='Zoom Trace 1', width=17, command=self.zoomTrace1)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='Zoom Trace 2', width=17, command=self.zoomTrace2)
+        button.pack(side=TOP, pady=5)
+        button = Button(master=self.leftSideFrame, text='Zoom Reset', width=17, command=self.zoomReset)
+        button.pack(side=TOP, pady=5)
+
+        button = Button(master=self.leftSideFrame, text='Quit', width=17, command=sys.exit)
+        button.pack(side=BOTTOM, pady=80)
+        
+        self.setDualTrace()
+        #self.setSingleTrace2()
 
     def update(self):
-        self.graphSignal1.getNewData()
-        self.graphSignal2.getNewData()
-        self.graphSignal1.update()
-        self.graphSignal2.update()
+        if self.trace == 3:
+            self.graphSignal1.getNewData()
+            self.graphSignal2.getNewData()
+            self.graphSignal1.update()
+            self.graphSignal2.update()
+        if self.trace == 2:
+            self.graphSignal1.getWasteData()
+            self.graphSignal2.getNewData()
+            self.graphSignal1.update()
+            self.graphSignal2.update()
+        if self.trace == 1:
+            self.graphSignal1.getNewData()
+            self.graphSignal2.getWasteData()
+            self.graphSignal1.update()
+            self.graphSignal2.update()
+
 
     def fourierSigs(self):
         self.app = FourierGui(self.graphSignal1.data, self.graphSignal1.period, self.graphSignal2.data, self.graphSignal2.period)
 
+    def setDualTrace(self):
+        self.trace = 3
+        serial.setDualTrace()
+
+    def setSingleTrace1(self):
+        self.trace = 1
+        serial.setSingleTrace1()
+
+    def setSingleTrace2(self):
+        self.trace = 2
+        serial.setSingleTrace1()
+
+    def zoomTrace1(self):
+        self.graphSignal1.zoom(int(self.xMin.get()), int(self.xMax.get()), int(self.yMin.get()), int(self.yMax.get()))
+        self.graphSignal2.update()
+
+    def zoomTrace2(self):
+        self.graphSignal1.update()
+        self.graphSignal2.zoom(int(self.xMin.get()), int(self.xMax.get()), int(self.yMin.get()), int(self.yMax.get()))
+
+    def zoomReset(self):
+        self.graphSignal1.update()
+        self.graphSignal2.update()
+    
 
 class Graph:
 
-    def __init__(self, top, name):
+    def __init__(self, master, name):
+        self.master = master
         self.name = name
         self.period = 2
         self.figure = Figure(figsize=(12,5))
@@ -54,15 +128,20 @@ class Graph:
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
         self.im = self.axes.set_ylabel("Voltage (V)")
-        self.canvas = FigureCanvasTkAgg(self.figure, master=top)
+        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)
         self.canvas.get_tk_widget().pack(side=TOP)
 
     def getNewData(self):
         for i in range(NUM_DATA_POINTS):
-        #    val = input("Input num: ")
-        #    self.data[i] = val
-            self.data[i] = np.sin(pi*i/4)
-        #self.period = input("Input period: ")    
+            #self.data[i] = np.sin(pi*i/((NUM_DATA_POINTS-1)/8))
+            self.data[i] = serial.getVal()
+            if self.data[i] < 240 and self.data[i] > 10:
+                print(self.data[i])
+
+    def getWasteData(self):
+        for i in range(NUM_DATA_POINTS):
+            #waste = serial.getVal()
+            pass
 
     def update(self):
         self.canvas.get_tk_widget().destroy()
@@ -70,12 +149,27 @@ class Graph:
         self.axes = self.figure.add_subplot(111)
         self.im = self.axes.set_autoscale_on(False)
         self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_POINTS)], self.data, '-r')
-        self.im = self.axes.axis([0, self.period * (NUM_DATA_POINTS-1), -3, 3])
+        #self.im = self.axes.axis([0, self.period * (NUM_DATA_POINTS-1), -3, 3])
+        self.im = self.axes.axis([0, self.period * (NUM_DATA_POINTS-1), min(self.data), max(self.data)])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
         self.im = self.axes.set_ylabel("Voltage (V)")
 
-        self.canvas = FigureCanvasTkAgg(self.figure, master=top)
+        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)
+        self.canvas.get_tk_widget().pack(side=TOP)
+
+    def zoom(self, xMin, xMax, yMin, yMax):
+        self.canvas.get_tk_widget().destroy()
+        self.figure = Figure(figsize=(12,5))
+        self.axes = self.figure.add_subplot(111)
+        self.im = self.axes.set_autoscale_on(False)
+        self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_POINTS)], self.data, '-r')
+        self.im = self.axes.axis([xMin, xMax, yMin, yMax])
+        self.im = self.axes.set_title(self.name)
+        self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
+        self.im = self.axes.set_ylabel("Voltage (V)")
+        
+        self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)
         self.canvas.get_tk_widget().pack(side=TOP)
 
 
@@ -86,8 +180,8 @@ class FourierGui:
         self.frame1 = Frame(self.master1)
         self.graphSignal1 = FourierAmpGraph(self.master1, "Fourier Amplitude of Signal 1", dataSig1, periodSig1)
         self.graphSignal2 = FourierPhaseGraph(self.master1, "Fourier Phase of Signal 1", dataSig1, periodSig1)
-        button = Button(master=self.master1, text='Close Window', command=self.close_windows)
-        button.pack(side=BOTTOM)
+        #button = Button(master=self.master1, text='Close Window', command=self.close_windows)
+        #button.pack(side=BOTTOM)
         self.frame1.pack()
          
         self.master2 = Toplevel(top)
@@ -119,7 +213,8 @@ class FourierAmpGraph:
         self.axes = self.figure.add_subplot(111)
         data = [np.absolute(x) for x in self.data]
         self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
-        self.im = self.axes.axis([-1, NUM_DATA_POINTS, -1, max(data)+1])
+        maxData = max(data)
+        self.im = self.axes.axis([NUM_DATA_POINTS/-6, NUM_DATA_POINTS+NUM_DATA_POINTS/6, -1, maxData+maxData/6])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
@@ -132,14 +227,15 @@ class FourierPhaseGraph:
     def __init__(self, master, name, otherData, otherPeriod):
         self.name = name
         self.data = np.fft.fft(otherData)
-        print(self.data)
         #self.otherPeriod = otherPeriod
         self.period = 0.5
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         data = [np.angle(x) for x in self.data]
         self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
-        self.im = self.axes.axis([-1, NUM_DATA_POINTS, min(data)-1, max(data)+1])
+        minData = min(data)
+        maxData = max(data)
+        self.im = self.axes.axis([NUM_DATA_POINTS/-6, NUM_DATA_POINTS+NUM_DATA_POINTS/6, minData+minData/6, maxData+maxData/6])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
@@ -148,8 +244,10 @@ class FourierPhaseGraph:
 
 
 
+serial = MySerial()
 
 top = Tk()
+top.configure(background='#444444')
 graphGui = GraphGui()
 menubar = Menu(top)
 filemenu = Menu(menubar, tearoff=0)
