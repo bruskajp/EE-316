@@ -8,7 +8,9 @@ from classes.keyboard import MySerial
 
 #NUM_DATA_POINTS = 256
 #NUM_DATA_POINTS = 64*32
-NUM_DATA_POINTS = 11520
+NUM_DATA_POINTS = 128
+NUM_DATA_SAMPLES = 5
+NUM_DATA_TOTAL = NUM_DATA_POINTS * NUM_DATA_SAMPLES # 64 * 180 = 11520
 
 """
     TODO:   Do units need to change?
@@ -69,20 +71,31 @@ class GraphGui:
 
     def update(self):
         if self.trace == 3:
-            self.graphSignal1.getNewData()
-            self.graphSignal2.getNewData()
+            for offset in range(NUM_DATA_SAMPLES):
+                serial.readyUp('\x03')
+                self.graphSignal1.getNewData(offset)
+                self.graphSignal2.getNewData(offset)
+                #self.graphSignal2.getWasteData()
+                serial.doneReading()
+                if offset % 10 == 0:
+                    print(offset)
             self.graphSignal1.update()
             self.graphSignal2.update()
         if self.trace == 2:
-            self.graphSignal1.getWasteData()
-            self.graphSignal2.getNewData()
+            for offset in range(NUM_DATA_SAMPLES):
+                serial.readyUp('\x03')
+                self.graphSignal1.getWasteData()
+                self.graphSignal2.getNewData(offset)
             self.graphSignal1.update()
             self.graphSignal2.update()
         if self.trace == 1:
-            self.graphSignal1.getNewData()
-            self.graphSignal2.getWasteData()
+            for offset in range(NUM_DATA_SAMPLES):
+                serial.readyUp('\x03')
+                self.graphSignal1.getNewData(offset)
+                self.graphSignal2.getWasteData()
             self.graphSignal1.update()
             self.graphSignal2.update()
+        
 
 
     def fourierSigs(self):
@@ -90,15 +103,15 @@ class GraphGui:
 
     def setDualTrace(self):
         self.trace = 3
-        serial.setDualTrace()
+        #serial.setDualTrace()
 
     def setSingleTrace1(self):
         self.trace = 1
-        serial.setSingleTrace1()
+        #serial.setSingleTrace1()
 
     def setSingleTrace2(self):
         self.trace = 2
-        serial.setSingleTrace1()
+        #serial.setSingleTrace1()
 
     def zoomTrace1(self):
         self.graphSignal1.zoom(int(self.xMin.get()), int(self.xMax.get()), int(self.yMin.get()), int(self.yMax.get()))
@@ -122,35 +135,40 @@ class Graph:
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         self.im = self.axes.set_autoscale_on(False)
-        self.data = np.zeros(NUM_DATA_POINTS)  # data to plot
-        self.im = self.axes.plot(range(NUM_DATA_POINTS), self.data)
-        self.im = self.axes.axis([0, NUM_DATA_POINTS-1, -3, 3])
+        self.data = np.zeros(NUM_DATA_TOTAL)  # data to plot
+        self.im = self.axes.plot(range(NUM_DATA_TOTAL), self.data)
+        self.im = self.axes.axis([0, NUM_DATA_TOTAL-1, -3, 3])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
         self.im = self.axes.set_ylabel("Voltage (V)")
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.master)
         self.canvas.get_tk_widget().pack(side=TOP)
 
-    def getNewData(self):
+    def getNewData(self, offset):
+        #self.prev = -1
+        #self.repeat = -1
         for i in range(NUM_DATA_POINTS):
-            #self.data[i] = np.sin(pi*i/((NUM_DATA_POINTS-1)/8))
-            self.data[i] = serial.getVal()
-            if self.data[i] < 240 and self.data[i] > 10:
-                print(self.data[i])
+            trueOffset = offset * NUM_DATA_POINTS
+
+            #self.data[i+trueOffset] = np.sin(2*pi*i/64)
+            self.data[i+trueOffset] = (serial.getVal() / 51)-2.5
+            print(str(self.name) + " " + str(i+trueOffset) + "\t" + str(self.data[i+trueOffset]))
 
     def getWasteData(self):
         for i in range(NUM_DATA_POINTS):
-            #waste = serial.getVal()
             pass
+            #waste = serial.getVal()
 
     def update(self):
         self.canvas.get_tk_widget().destroy()
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         self.im = self.axes.set_autoscale_on(False)
-        self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_POINTS)], self.data, '-r')
+        self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_TOTAL)], self.data, '-r')
         #self.im = self.axes.axis([0, self.period * (NUM_DATA_POINTS-1), -3, 3])
-        self.im = self.axes.axis([0, self.period * (NUM_DATA_POINTS-1), min(self.data), max(self.data)])
+        minData = min(self.data)
+        maxData = max(self.data)
+        self.im = self.axes.axis([0, self.period * (NUM_DATA_TOTAL-1), minData-abs(minData/6), maxData+maxData/6])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
         self.im = self.axes.set_ylabel("Voltage (V)")
@@ -163,7 +181,7 @@ class Graph:
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         self.im = self.axes.set_autoscale_on(False)
-        self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_POINTS)], self.data, '-r')
+        self.im = self.axes.plot([x * self.period for x in range(NUM_DATA_TOTAL)], self.data, '-r')
         self.im = self.axes.axis([xMin, xMax, yMin, yMax])
         self.im = self.axes.set_title(self.name)
         self.im = self.axes.set_xlabel("Time (" + str(self.period) + "ns)")
@@ -206,25 +224,34 @@ class FourierAmpGraph:
         print(self.dataReal)
         print(self.dataImag)
         #self.otherPeriod = otherPeriod
-        for i in range(len(self.data)):
-            print(((self.dataReal[i] ** 2) + (self.dataImag[i] ** 2))**0.5)
+        #for i in range(len(self.data)):
+        #    print(((self.dataReal[i] ** 2) + (self.dataImag[i] ** 2))**0.5)
         self.period = 0.5
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         data = [np.absolute(x) for x in self.data]
-        self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
+        dataRange = [x * 500000 for x in np.fft.fftfreq(NUM_DATA_TOTAL)]
+        #dataRange = range(NUM_DATA_TOTAL)
+
+        self.im = self.axes.stem(dataRange, data) # edit this
         maxData = max(data)
-        self.im = self.axes.axis([NUM_DATA_POINTS/-6, NUM_DATA_POINTS+NUM_DATA_POINTS/6, -1, maxData+maxData/6])
+        minDataRange = min(dataRange)
+        maxDataRange = max(dataRange)
+        self.im = self.axes.axis([minDataRange, maxDataRange, -1, maxData+maxData/6])
         self.im = self.axes.set_title(self.name)
-        self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
+        #self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
+        self.im = self.axes.set_xlabel("Frequency (Hz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
         self.canvas = FigureCanvasTkAgg(self.figure, master=master)
         self.canvas.get_tk_widget().pack(side=TOP)
+        #for i in range(NUM_DATA_TOTAL):
+        #    print(str(dataRange[i]) + "  " + str(data[i]))
 
 
 class FourierPhaseGraph:
     
     def __init__(self, master, name, otherData, otherPeriod):
+                
         self.name = name
         self.data = np.fft.fft(otherData)
         #self.otherPeriod = otherPeriod
@@ -232,16 +259,22 @@ class FourierPhaseGraph:
         self.figure = Figure(figsize=(12,5))
         self.axes = self.figure.add_subplot(111)
         data = [np.angle(x) for x in self.data]
-        self.im = self.axes.stem(range(NUM_DATA_POINTS), data) # edit this
+        dataRange = [x * 500000 for x in np.fft.fftfreq(NUM_DATA_TOTAL)]
+        #dataRange = range(NUM_DATA_TOTAL)
+        self.im = self.axes.stem(dataRange, data) # edit this
         minData = min(data)
         maxData = max(data)
-        self.im = self.axes.axis([NUM_DATA_POINTS/-6, NUM_DATA_POINTS+NUM_DATA_POINTS/6, minData+minData/6, maxData+maxData/6])
+        minDataRange = min(dataRange)
+        maxDataRange = max(dataRange)
+        self.im = self.axes.axis([minDataRange, maxDataRange, minData-abs(minData/6), maxData+maxData/6])
         self.im = self.axes.set_title(self.name)
-        self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
+        #self.im = self.axes.set_xlabel("Frequency (" + str(self.period) + "MHz)")
+        self.im = self.axes.set_xlabel("Frequency (Hz)")
         self.im = self.axes.set_ylabel("Voltage (V)")
         self.canvas = FigureCanvasTkAgg(self.figure, master=master)
         self.canvas.get_tk_widget().pack(side=TOP)
-
+        #for i in range(NUM_DATA_TOTAL):
+        #    print(str(dataRange[i]) + "  " + str(data[i]))
 
 
 serial = MySerial()
