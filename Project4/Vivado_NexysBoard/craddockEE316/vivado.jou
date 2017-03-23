@@ -1,0 +1,106 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Thu Mar 16 12:05:44 2017
+# Process ID: 4124
+# Current directory: C:/Users/ulab/Desktop/craddockEE316
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2136 C:\Users\ulab\Desktop\craddockEE316\craddockEE316.xpr
+# Log file: C:/Users/ulab/Desktop/craddockEE316/vivado.log
+# Journal file: C:/Users/ulab/Desktop/craddockEE316\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/ulab/Desktop/craddockEE316/craddockEE316.xpr
+update_compile_order -fileset sources_1
+file mkdir C:/Users/ulab/Desktop/craddockEE316/craddockEE316.srcs/sources_1/new
+close [ open C:/Users/ulab/Desktop/craddockEE316/craddockEE316.srcs/sources_1/new/PWM_Controller.vhd w ]
+add_files C:/Users/ulab/Desktop/craddockEE316/craddockEE316.srcs/sources_1/new/PWM_Controller.vhd
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+disconnect_hw_server localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server -url localhost:3121
+current_hw_target [get_hw_targets */xilinx_tcf/Digilent/210292746729A]
+set_property PARAM.FREQUENCY 10000000 [get_hw_targets */xilinx_tcf/Digilent/210292746729A]
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+close [ open C:/Users/ulab/Desktop/craddockEE316/craddockEE316.srcs/sources_1/new/adc_parse.vhd w ]
+add_files C:/Users/ulab/Desktop/craddockEE316/craddockEE316.srcs/sources_1/new/adc_parse.vhd
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {C:/Users/ulab/Desktop/craddockEE316/craddockEE316.runs/impl_1/top_level.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+refresh_hw_device [lindex [get_hw_devices] 0]

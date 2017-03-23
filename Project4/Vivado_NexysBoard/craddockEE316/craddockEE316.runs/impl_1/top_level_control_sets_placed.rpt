@@ -1,0 +1,83 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
+| Date         : Thu Mar 16 13:52:02 2017
+| Host         : ul-43 running 64-bit Service Pack 1  (build 7601)
+| Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
+| Design       : top_level
+| Device       : xc7a100t
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    30 |
+| Unused register locations in slices containing registers |    90 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              13 |           10 |
+| No           | No                    | Yes                    |              21 |            9 |
+| No           | Yes                   | No                     |             156 |           41 |
+| Yes          | No                    | No                     |              22 |           14 |
+| Yes          | No                    | Yes                    |              26 |            9 |
+| Yes          | Yes                   | No                     |             160 |           37 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++------------------------------+----------------------------------------+---------------------------------------------+------------------+----------------+
+|         Clock Signal         |              Enable Signal             |               Set/Reset Signal              | Slice Load Count | Bel Load Count |
++------------------------------+----------------------------------------+---------------------------------------------+------------------+----------------+
+|  Inst_sys_clk/tx_cnt_reg[0]  |                                        | Inst_ResetDeb/Sreset                        |                1 |              1 |
+|  Inst_sys_clk/tx_cnt_reg[0]  | Inst_UART/tx_out9_out                  | Inst_ResetDeb/Sreset                        |                1 |              1 |
+|  iCLK_IBUF_BUFG              | Inst_ADC/Write_sig0                    | Inst_ResetDeb/Sreset                        |                1 |              1 |
+|  iCLK_IBUF_BUFG              | Inst_ADC/ALE0                          | Inst_ResetDeb/Sreset                        |                1 |              2 |
+|  iCLK_IBUF_BUFG              | Inst_PWM/pwm_out[0]_i_1_n_0            | iReset_IBUF                                 |                1 |              2 |
+|  oadc_outputEnable_OBUF_BUFG |                                        |                                             |                1 |              3 |
+|  Inst_sys_clk/clk            | Inst_UART/rx_cnt[3]_i_1_n_0            | Inst_ResetDeb/Sreset                        |                1 |              4 |
+|  Inst_sys_clk/clk            | Inst_UART/rx_sample_cnt[3]_i_1_n_0     | Inst_ResetDeb/Sreset                        |                1 |              4 |
+|  Inst_sys_clk/tx_cnt_reg[0]  | Inst_UART/tx_is_empty1                 | Inst_ResetDeb/Sreset                        |                1 |              4 |
+|  baudRate_reg_BUFG           |                                        |                                             |                3 |              4 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_ResetDeb/Sreset                        |                3 |              4 |
+|  iCLK_IBUF_BUFG              | Inst_RAM_Controller/RAMenb2            |                                             |                2 |              4 |
+|  iCLK_IBUF_BUFG              | Inst_RAM_Controller/enb                |                                             |                1 |              4 |
+|  iCLK_IBUF_BUFG              |                                        |                                             |                6 |              6 |
+|  iCLK_IBUF_BUFG              | Inst_PWM/half_duty_reg[0]0             |                                             |                4 |              7 |
+|  iCLK_IBUF_BUFG              | Inst_PWM/reset_n                       |                                             |                7 |              7 |
+|  Inst_sys_clk/clk            |                                        | Inst_ResetDeb/Sreset                        |                3 |              8 |
+|  Inst_sys_clk/tx_cnt_reg[0]  | Inst_RAM_Controller/E[0]               | Inst_ResetDeb/Sreset                        |                2 |              8 |
+|  iCLK_IBUF_BUFG              |                                        | iReset_IBUF                                 |                2 |              8 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_ResetDeb/btn_cntr[0]_i_1_n_0           |                4 |             16 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_sys_clk/clear                          |                7 |             26 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_sys_clk/geqOp_inferred__0_carry__2_n_3 |                7 |             26 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_sys_clk/geqOp_inferred__1_carry__2_n_3 |                7 |             26 |
+|  iCLK_IBUF_BUFG              |                                        | Inst_ADC/clk_en                             |                8 |             31 |
+|  oadc_outputEnable_OBUF_BUFG |                                        | Inst_ADC/dataCount[31]_i_1_n_0              |                8 |             31 |
+|  baudRate_reg_BUFG           | Inst_RAM_Controller/count3[31]_i_2_n_0 | Inst_RAM_Controller/count3_0                |                6 |             32 |
+|  baudRate_reg_BUFG           | Inst_UART/doneCount_reg[31]            | Inst_UART/doneCount_reg[0]                  |                8 |             32 |
+|  baudRate_reg_BUFG           | Inst_UART/count2_reg[31][0]            | Inst_RAM_Controller/count3_0                |                7 |             32 |
+|  iCLK_IBUF_BUFG              | Inst_ADC/count4                        | Inst_RAM_Controller/count4[0]_i_1_n_0       |                8 |             32 |
+|  iCLK_IBUF_BUFG              | Inst_RAM_Controller/count1             | Inst_RAM_Controller/count1[0]_i_1_n_0       |                8 |             32 |
++------------------------------+----------------------------------------+---------------------------------------------+------------------+----------------+
+
+
