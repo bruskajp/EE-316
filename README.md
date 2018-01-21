@@ -1,2 +1,2 @@
-# EE-316
+# Junior Lab
 Computer Engineering Junior Lab
